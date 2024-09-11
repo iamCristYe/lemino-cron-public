@@ -27,7 +27,7 @@ while True:
         no = len(result["meta_list"][0]["child_license_list"])
         # sendTelegramMsg(f"lemino EP{no}")
         print(no)
-        if no > 10:
+        if no > 11:
             sendTelegramMsg("lemino!!")
         break
     except Exception as e:
