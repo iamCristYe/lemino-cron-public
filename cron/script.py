@@ -3,7 +3,42 @@ import os
 import json
 import time
 import requests
+import string
+import json
+import requests
+import subprocess
 
+base = ""
+for i in range(0, 10):
+    base += str(i)
+base += string.ascii_lowercase
+# print(len(base))
+
+
+def decode(str):
+    ls = list(str)
+    result = 0
+    for i in range(len(ls)):
+        current = ls[-1 - i]
+        num = base.index(current)
+        result += pow(36, i) * num
+    return result
+
+
+def encode(num):
+    result = []
+    while num >= 36:
+        remainder = num % 36
+        import math
+
+        num = math.floor((num - remainder) / 36)
+        result.append(base[remainder])
+
+    result.append(base[num])
+    res = ""
+    for i in range(len(result)):
+        res += result[-1 - i]
+    return str(res)
 
 def sendTelegramMsg(message):
     # Replace with your own bot token and chat ID
@@ -33,3 +68,24 @@ while True:
     except Exception as e:
         sendTelegramMsg(e)
         break
+
+
+init = decode("00lx311r65")
+
+for i in range(850, 1100):
+    cid = f"00{encode(init+i)}"
+    # print(i, cid)
+    url = f"https://vod-cdn0.lemino.docomo.ne.jp/img/{cid}/thumbnail/0250.jpg"
+    response = requests.get(url, stream=True)
+
+    # Get content size in bytes
+    content_size = int(response.headers.get("Content-Length", 0))
+
+    # Check if the content size is greater than 2KB (2048 bytes)
+    if content_size > 2048:
+        sendTelegramMsg(url)
+        print(f"Image saved as {cid}.jpg")
+        break
+    else:
+        print(response.content)
+        print("Size is smaller than 2KB, not saved.")
