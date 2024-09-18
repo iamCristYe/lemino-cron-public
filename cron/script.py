@@ -57,30 +57,26 @@ def sendTelegramMsg(message):
     requests.post(url, data=payload)
 
 
-while True:
-    try:
-        result = json.loads(requests.get(os.environ["URL"]).content)
-        no = len(result["meta_list"][0]["child_license_list"])
-        # sendTelegramMsg(f"lemino EP{no}")
-        print(no)
-        if no > 12:
-            sendTelegramMsg("leminoN")
-            break
-    except Exception as e:
-        sendTelegramMsg(e)
-        break
-while True:
-    try:
-        result = json.loads(requests.get(os.environ["URL_S"]).content)
-        no = len(result["meta_list"][0]["child_license_list"])
-        # sendTelegramMsg(f"lemino EP{no}")
-        print(no)
-        if no > 12:
-            sendTelegramMsg("leminoS")
-            break
-    except Exception as e:
-        sendTelegramMsg(e)
-        break
+try:
+    result = json.loads(requests.get(os.environ["URL"]).content)
+    no = len(result["meta_list"][0]["child_license_list"])
+    # sendTelegramMsg(f"lemino EP{no}")
+    print(no)
+    if no > 12:
+        sendTelegramMsg("leminoN")
+except Exception as e:
+    sendTelegramMsg(e)
+
+
+try:
+    result = json.loads(requests.get(os.environ["URL_S"]).content)
+    no = len(result["meta_list"][0]["child_license_list"])
+    # sendTelegramMsg(f"lemino EP{no}")
+    print(no)
+    if no > 12:
+        sendTelegramMsg("leminoS")
+except Exception as e:
+    sendTelegramMsg(e)
 
 
 init = decode("00lx311r65")
