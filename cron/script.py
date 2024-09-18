@@ -101,3 +101,4 @@ for i in range(920, 1100):
         break
     else:
         print("Size is smaller than 2KB, not saved.")
+        time.sleep(5)
