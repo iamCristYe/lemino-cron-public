@@ -42,6 +42,7 @@ jobs:
         python cron/script.py
       env:
           URL: ${{ secrets.URL }}
+          URL_S: ${{ secrets.URL_S }}
           bot_token: ${{ secrets.bot_token }}
           chat_id: ${{ secrets.chat_id }}
 
