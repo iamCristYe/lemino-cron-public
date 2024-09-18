@@ -86,14 +86,15 @@ for i in range(920, 1100):
     cid = f"00{encode(init+i)}"
     print(i, cid)
     url = f"https://vod-cdn0.lemino.docomo.ne.jp/img/{cid}/thumbnail/0250.jpg"
-    response = requests.head(url)
+    print(url)
+    # response = requests.head(url)
 
-    # Get content size in bytes
-    content_size = int(response.headers.get("Content-Length", 0))
+    # # Get content size in bytes
+    # content_size = int(response.headers.get("Content-Length", 0))
 
-    # Check if the content size is greater than 2KB (2048 bytes)
-    if content_size > 2048:
-        print(url)
-        break
-    else:
-        print("Size is smaller than 2KB, not saved.")
+    # # Check if the content size is greater than 2KB (2048 bytes)
+    # if content_size > 2048:
+    #     print(url)
+    #     break
+    # else:
+    #     print("Size is smaller than 2KB, not saved.")
