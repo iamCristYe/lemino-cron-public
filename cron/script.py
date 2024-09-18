@@ -82,9 +82,9 @@ while True:
 
 init = decode("00lx311r65")
 
-for i in range(850, 1100):
+for i in range(850, 860):
     cid = f"00{encode(init+i)}"
-    # print(i, cid)
+    print(i, cid)
     url = f"https://vod-cdn0.lemino.docomo.ne.jp/img/{cid}/thumbnail/0250.jpg"
     response = requests.get(url, stream=True)
 
