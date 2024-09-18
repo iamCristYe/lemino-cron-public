@@ -82,20 +82,18 @@ while True:
 
 init = decode("00lx311r65")
 
-for i in range(850, 860):
+for i in range(920, 1100):
     cid = f"00{encode(init+i)}"
     print(i, cid)
     url = f"https://vod-cdn0.lemino.docomo.ne.jp/img/{cid}/thumbnail/0250.jpg"
-    response = requests.get(url, stream=True)
+    response = requests.head(url)
 
     # Get content size in bytes
     content_size = int(response.headers.get("Content-Length", 0))
 
     # Check if the content size is greater than 2KB (2048 bytes)
     if content_size > 2048:
-        sendTelegramMsg(url)
-        print(f"Image saved as {cid}.jpg")
+        print(url)
         break
     else:
-        print(response.content)
         print("Size is smaller than 2KB, not saved.")
