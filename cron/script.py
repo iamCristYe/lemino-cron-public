@@ -79,9 +79,9 @@ except Exception as e:
     sendTelegramMsg(e)
 
 
-init = decode("00lx311r65")
+init = decode("00lx311rvu")
 
-for i in range(920, 1100):
+for i in range(850, 1150):
     cid = f"00{encode(init+i)}"
 
     url = f"https://vod-cdn0.lemino.docomo.ne.jp/img/{cid}/thumbnail/0250.jpg"
@@ -96,5 +96,5 @@ for i in range(920, 1100):
         sendTelegramMsg(url)
         break
     else:
-        print("Size is smaller than 2KB, not saved.")
+        print("Size is smaller than 2KB.")
         time.sleep(5)
