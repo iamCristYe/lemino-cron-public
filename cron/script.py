@@ -40,6 +40,7 @@ def encode(num):
         res += result[-1 - i]
     return str(res)
 
+
 def sendTelegramMsg(message):
     # Replace with your own bot token and chat ID
     bot_token = os.environ["bot_token"]
@@ -64,17 +65,19 @@ while True:
         print(no)
         if no > 12:
             sendTelegramMsg("leminoN")
+            break
     except Exception as e:
         sendTelegramMsg(e)
         break
-
+while True:
     try:
         result = json.loads(requests.get(os.environ["URL_S"]).content)
         no = len(result["meta_list"][0]["child_license_list"])
         # sendTelegramMsg(f"lemino EP{no}")
         print(no)
         if no > 12:
-            sendTelegramMsg("leminoN")
+            sendTelegramMsg("leminoS")
+            break
     except Exception as e:
         sendTelegramMsg(e)
         break
