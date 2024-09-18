@@ -62,9 +62,19 @@ while True:
         no = len(result["meta_list"][0]["child_license_list"])
         # sendTelegramMsg(f"lemino EP{no}")
         print(no)
-        if no > 11:
-            sendTelegramMsg("lemino!!")
+        if no > 12:
+            sendTelegramMsg("leminoN")
+    except Exception as e:
+        sendTelegramMsg(e)
         break
+
+    try:
+        result = json.loads(requests.get(os.environ["URL_S"]).content)
+        no = len(result["meta_list"][0]["child_license_list"])
+        # sendTelegramMsg(f"lemino EP{no}")
+        print(no)
+        if no > 12:
+            sendTelegramMsg("leminoN")
     except Exception as e:
         sendTelegramMsg(e)
         break
