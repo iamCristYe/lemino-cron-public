@@ -68,14 +68,6 @@ except Exception as e:
     sendTelegramMsg(e)
 
 
-try:
-    result = json.loads(requests.get(os.environ["URL_S"]).content)
-    no = len(result["meta_list"][0]["child_license_list"])
-    # sendTelegramMsg(f"lemino EP{no}")
-    print(no)
-    if no > 12:
-        sendTelegramMsg("leminoS")
-except Exception as e:
-    sendTelegramMsg(e)
+
 
 
