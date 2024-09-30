@@ -62,7 +62,7 @@ try:
     no = len(result["meta_list"][0]["child_license_list"])
     # sendTelegramMsg(f"lemino EP{no}")
     print(no)
-    if no > 13:
+    if no > 14:
         sendTelegramMsg("leminoN")
 except Exception as e:
     sendTelegramMsg(e)
